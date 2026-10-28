@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
+import corsOptions from './config/corsOptions.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 
@@ -14,7 +15,7 @@ connectDB();
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
